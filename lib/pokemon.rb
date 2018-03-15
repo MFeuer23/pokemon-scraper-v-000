@@ -19,8 +19,7 @@ class Pokemon
   end
   
   def self.find(id, db)
-    if self.all[id - 1]
-      self.all[id - 1]
+    if db.execute("INSERT INTO pokemon (name, type) VALUES (?, ?)",name, type)
     else
       Pokemon.new(id: id, name: "Magikarp", type: "water", db: @db)
     end
