@@ -19,10 +19,9 @@ class Pokemon
   end
   
   def self.find(id, db)
-    db.execute("SELECT * FROM pokemon WHERE id = id")
-    else
-      Pokemon.new(id: id, name: "Magikarp", type: "water", db: @db)
-    end
+    pokemon_array = db.execute("SELECT * FROM pokemon WHERE id = #{id}")
+    pokemon = Pokemon.new(id: id, name: "#{pokemon_array[1]}", type: "#{pokemon_array[2]}", db: @db)
+    pokemon
   end
   
   def alter_hp(hp, db)
