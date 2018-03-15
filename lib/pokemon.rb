@@ -19,7 +19,7 @@ class Pokemon
   end
   
   def self.find(id, db)
-    if db.execute("INSERT INTO pokemon (name, type) VALUES (?, ?)",name, type)
+    db.execute("SELECT * FROM pokemon WHERE id = id")
     else
       Pokemon.new(id: id, name: "Magikarp", type: "water", db: @db)
     end
